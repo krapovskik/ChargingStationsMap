@@ -63,7 +63,7 @@ function getCity(lat,lng) {
     ourRequest.open('GET', 'https://api.openweathermap.org/geo/1.0/reverse?lat='+lat+'&lon='+lng+'&limit=2&appid=fb06a46815d7f7c87c719dcf9aa0fa71')
     ourRequest.onload = function () {
         var ourData = JSON.parse(ourRequest.responseText);
-        $('#city').val(ourData[0]['local_names']['en']);
+        $('#city').val(ourData[0]['name']);
     };
     ourRequest.send();
 }
@@ -90,7 +90,8 @@ function showLatLng(){
             $('#cord').val(e.latlng.lat + ", "+ e.latlng.lng);
         });
         marker.on('dragend', function () {
-            var parts = $('#cord').val().split(',');
+            var parts = $('#cord').val().split(', ');
+            console.log(parts);
             getCity(parts[0],parts[1]);
         });
         map.addLayer(marker);
