@@ -38,8 +38,10 @@ function filterStations(map){
     var filter = document.getElementById('filter');
     var ourRequest = new XMLHttpRequest();
     if(filter.value.length === 0)
+        // ourRequest.open('GET','https://charging-stations-mk.herokuapp.com/api/stations')
         ourRequest.open('GET','/api/stations')
     else
+        // ourRequest.open('GET','https://charging-stations-mk.herokuapp.com/api/stations?filter='+filter.value)
         ourRequest.open('GET','/api/stations?filter='+filter.value)
     ourRequest.onload = function (){
         var ourData = JSON.parse(ourRequest.responseText);
