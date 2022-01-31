@@ -59,13 +59,17 @@ function filterStations(map){
 }
 
 function getCity(lat,lng) {
-    var ourRequest = new XMLHttpRequest();
-    ourRequest.open('GET', 'http://api.geonames.org/findNearbyPlaceNameJSON?lat='+ lat +'&lng='+ lng +'&username=dzemomusaka')
-    ourRequest.onload = function () {
-        var ourData = JSON.parse(ourRequest.responseText);
-        $('#city').val(ourData.geonames[0].adminName1+"");
-    };
-    ourRequest.send();
+    // var ourRequest = new XMLHttpRequest();
+    // ourRequest.open('GET', 'http://api.geonames.org/findNearbyPlaceNameJSON?lat='+ lat +'&lng='+ lng +'&username=dzemomusaka')
+    const url = 'http://api.geonames.org/findNearbyPlaceNameJSON?lat='+ lat +'&lng='+ lng +'&username=dzemomusaka';
+    // ourRequest.onload = function () {
+    //     var ourData = JSON.parse(ourRequest.responseText);
+    //     $('#city').val(ourData.geonames[0].adminName1+"");
+    // };
+    // ourRequest.send();
+    $.getJSON(url,function (data){
+        console.log(data);
+    })
 }
 
 function showLatLng(){
