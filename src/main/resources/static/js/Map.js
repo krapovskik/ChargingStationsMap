@@ -51,7 +51,6 @@ function filterStations(map){
                 '<p>Operator: ' + ourData[i].operatorName + '</p>'
                 + '<p>Type: ' + ourData[i].type + '</p>'
             );
-            console.log(ourData);
         }
 
     };
@@ -91,7 +90,6 @@ function showLatLng(){
         });
         marker.on('dragend', function () {
             var parts = $('#cord').val().split(', ');
-            console.log(parts);
             getCity(parts[0],parts[1]);
         });
         map.addLayer(marker);
