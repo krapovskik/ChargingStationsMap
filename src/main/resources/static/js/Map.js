@@ -38,9 +38,9 @@ function filterStations(map){
     var filter = document.getElementById('filter');
     var ourRequest = new XMLHttpRequest();
     if(filter.value.length === 0)
-        ourRequest.open('GET','https://charging-stations-mk.herokuapp.com/api/stations')
+        ourRequest.open('GET','http://127.0.0.1:8080/api/stations')
     else
-        ourRequest.open('GET','https://charging-stations-mk.herokuapp.com/api/stations?filter='+filter.value)
+        ourRequest.open('GET','http://127.0.0.1:8080/api/stations?filter='+filter.value)
     ourRequest.onload = function (){
         var ourData = JSON.parse(ourRequest.responseText);
         var marker;
@@ -60,7 +60,7 @@ function filterStations(map){
 
 function getCity(lat,lng) {
     var ourRequest = new XMLHttpRequest();
-    ourRequest.open('GET', 'http://api.geonames.org/findNearbyPlaceNameJSON?lat='+ lat +'&lng='+ lng +'&username=demo123')
+    ourRequest.open('GET', 'http://api.geonames.org/findNearbyPlaceNameJSON?lat='+ lat +'&lng='+ lng +'&username=dzemomusaka')
     ourRequest.onload = function () {
         var ourData = JSON.parse(ourRequest.responseText);
         $('#city').val(ourData.geonames[0].adminName1+"");
