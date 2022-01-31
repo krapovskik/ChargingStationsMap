@@ -60,7 +60,8 @@ function filterStations(map){
 
 function getCity(lat,lng) {
     var ourRequest = new XMLHttpRequest();
-    ourRequest.open('GET', 'http://api.geonames.org/findNearbyPlaceNameJSON?lat='+ lat +'&lng='+ lng +'&username=dzemomusaka')
+    // ourRequest.open('GET', 'http://api.geonames.org/findNearbyPlaceNameJSON?lat='+ lat +'&lng='+ lng +'&username=dzemomusaka')
+    ourRequest.open('GET', 'https://maps.googleapis.com/maps/api/geocode/json?latlng='+lat+','+lng+'&sensor=true')
     ourRequest.onload = function () {
         var ourData = JSON.parse(ourRequest.responseText);
         $('#city').val(ourData.geonames[0].adminName1+"");
